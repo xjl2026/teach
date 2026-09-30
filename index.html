@@ -4,126 +4,174 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#F4F2EC">
-<title>AI应用第一课｜WorkBuddy上手与工作方法</title>
+<title>新员工AI应用入门</title>
 <style>
-:root{--bg:#F4F2EC;--ink:#102033;--muted:#627083;--blue:#315C91;--green:#2F6F61;--gold:#B58A36;--red:#A85A52;--line:#D7D4CC;--soft:#E9EEF4}
+:root{--bg:#F4F2EC;--ink:#132033;--muted:#647182;--blue:#315D91;--green:#3C7163;--gold:#B18A43;--red:#9A5A52;--line:#D7D3CA;--paper:#FAF8F3}
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif;color:var(--ink)}
 #viewport{position:fixed;inset:0;overflow:hidden;background:var(--bg)}
-#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform:translate(-50%,-50%) scale(var(--scale,1));transform-origin:center center;will-change:transform;background:var(--bg)}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform:translate(-50%,-50%) scale(var(--scale,1));transform-origin:center center;background:var(--bg)}
 .slide{position:absolute;inset:0;width:1600px;height:900px;display:none;overflow:hidden;background:var(--bg)}
-.slide.active{display:block}.inner{position:absolute;inset:0;padding:70px 82px 66px}
-.eyebrow{font-size:18px;font-weight:850;letter-spacing:.08em;color:var(--blue)}
-h1{font-size:76px;line-height:1.04;letter-spacing:-3px;margin:0;font-weight:880}
-h2{font-size:46px;line-height:1.13;letter-spacing:-1.3px;margin:0;font-weight:860}
-h3{font-size:27px;line-height:1.3;margin:0;font-weight:850}
-p{font-size:21px;line-height:1.62;margin:0;color:var(--muted)}
-.blue{color:var(--blue)}.green{color:var(--green)}.gold{color:var(--gold)}.muted{color:var(--muted)}
-.kickerline{display:flex;align-items:center;gap:16px;margin-bottom:14px}.kickerline:after{content:"";height:1px;flex:1;background:var(--line)}
-.cover-copy{position:absolute;left:88px;top:145px;width:850px;z-index:2}.cover-sub{font-size:27px;line-height:1.55;width:760px;margin-top:28px;color:#58687A}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:18px;font-weight:800;color:var(--blue);padding:9px 14px;border:1px solid #C8D4E2;border-radius:999px;background:rgba(255,255,255,.5)}.hero-tag:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
-.bigghost{position:absolute;right:78px;top:128px;font-size:390px;line-height:.78;font-weight:900;letter-spacing:-34px;color:transparent;-webkit-text-stroke:3px #CFD8E2;opacity:.9;user-select:none}
-.cover-line{position:absolute;right:128px;bottom:150px;width:560px;height:6px;background:linear-gradient(90deg,var(--blue) 0 34%,var(--green) 34% 68%,var(--gold) 68% 100%)}
-.statement{font-size:42px;line-height:1.38;font-weight:840;letter-spacing:-1px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:52px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}.four{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}.five{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
-.lineCard{padding:26px 0;border-top:1px solid var(--line)}.lineCard .cap{font-size:17px;color:#8994A0;font-weight:850;letter-spacing:.07em;margin-bottom:12px}.lineCard .title{font-size:30px;font-weight:860;margin-bottom:10px}.lineCard .desc{font-size:19px;line-height:1.55;color:var(--muted)}
-.levels{margin-top:52px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.level{padding:32px 26px 36px;border-right:1px solid var(--line)}.level:last-child{border-right:0}.level .num{font-size:17px;font-weight:850;color:#9AA4AE;margin-bottom:36px}.level .title{font-size:30px;font-weight:860;margin-bottom:12px}.level .desc{font-size:18px;line-height:1.58;color:var(--muted)}.level .map{margin-top:24px;padding-top:18px;border-top:1px solid #DCD9D2;font-size:17px;font-weight:800;color:var(--blue)}
-.modeGrid{margin-top:46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.mode{padding:31px 26px 36px;border-right:1px solid var(--line)}.mode:last-child{border-right:0}.mode .flag{font-size:17px;color:#8994A0;font-weight:850;margin-bottom:34px}.mode .name{font-size:31px;font-weight:860;margin-bottom:14px}.mode .desc{font-size:18px;line-height:1.58;color:var(--muted)}
-.workspace{margin-top:38px;padding:24px 28px;border-left:6px solid var(--green);background:#EDF4F1;font-size:22px;line-height:1.55;color:#27473F}
-.capGrid{margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.capItem{padding:30px 25px 34px;border-right:1px solid var(--line)}.capItem:last-child{border-right:0}.capItem .n{font-size:17px;color:#9AA4AE;font-weight:850;margin-bottom:42px}.capItem .title{font-size:30px;font-weight:860;margin-bottom:12px}.capItem .desc{font-size:18px;line-height:1.6;color:var(--muted)}.capItem .eg{margin-top:20px;font-size:16px;line-height:1.55;color:var(--blue);font-weight:750}
-.remoteFlow{display:grid;grid-template-columns:1fr 78px 1.2fr 78px 1fr;align-items:center;margin-top:54px}.node{padding:34px 28px;text-align:center;border-top:5px solid #B8C8DA}.node:nth-of-type(3){border-color:#9EC2B6}.node:nth-of-type(5){border-color:#D3BD8D}.node .mini{font-size:17px;color:#8A95A1;font-weight:850;letter-spacing:.06em}.node .main{font-size:30px;font-weight:860;margin-top:15px}.node .sub{font-size:18px;color:var(--muted);line-height:1.55;margin-top:12px}.rarr{text-align:center;font-size:42px;color:#9EA8B3}
-.platforms{margin-top:36px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:28px;align-items:center}.platforms b{font-size:19px}.platforms span{font-size:18px;color:var(--muted)}
-.parallel{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:44px}.box{padding:30px 0;border-top:5px solid #BBCADB}.box.greenbox{border-color:#A5C5B9}.box .cap{font-size:17px;color:#8B96A2;font-weight:850;margin-bottom:18px}.box .title{font-size:32px;font-weight:860;margin-bottom:14px}.box .desc{font-size:19px;line-height:1.62;color:var(--muted)}.box .steps{margin-top:24px;font-size:18px;line-height:1.72;color:#435266}
-.criteria{margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.criterion{padding:30px 18px 34px;border-right:1px solid var(--line)}.criterion:last-child{border-right:0}.criterion .n{font-size:17px;font-weight:850;color:#98A2AE;margin-bottom:36px}.criterion .w{font-size:29px;font-weight:860;margin-bottom:13px}.criterion .d{font-size:17px;line-height:1.55;color:var(--muted)}
-.startStrip{margin-top:30px;display:flex;align-items:center;gap:25px;padding:19px 0;border-bottom:1px solid var(--line)}.startStrip b{font-size:19px}.startStrip span{font-size:17px;color:var(--muted)}
-.briefList{margin-top:30px;border-top:1px solid var(--line)}.briefRow{display:grid;grid-template-columns:110px 1fr;gap:24px;padding:17px 0;border-bottom:1px solid var(--line)}.briefKey{font-size:19px;font-weight:860;color:var(--blue)}.briefVal{font-size:19px;line-height:1.55;color:#435267}
-.exampleBox{border-top:5px solid #B9C9DA;padding:28px 0}.exampleBox .title{font-size:17px;color:#84909D;font-weight:850;margin-bottom:20px}.exampleBox .quote{font-size:27px;line-height:1.55;font-weight:820;color:#223349}.exampleBox .mini{font-size:17px;line-height:1.6;color:var(--muted);margin-top:20px}
-.experience{margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.exp{padding:31px 24px 36px;border-right:1px solid var(--line)}.exp:last-child{border-right:0}.exp .n{font-size:17px;color:#9AA4AE;font-weight:850;margin-bottom:42px}.exp .title{font-size:29px;font-weight:860;margin-bottom:13px}.exp .desc{font-size:18px;line-height:1.58;color:var(--muted)}
-.timeline{position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin-top:82px}.timeline:before{content:"";position:absolute;left:5%;right:5%;top:42px;height:2px;background:#C9D0D7}.tstep{position:relative;text-align:center;padding:0 10px}.tstep .dot{position:relative;z-index:2;width:84px;height:84px;border-radius:50%;margin:0 auto 24px;background:var(--bg);border:3px solid #BFC9D4;display:grid;place-items:center;font-size:25px;font-weight:860;color:var(--blue)}.tstep .title{font-size:23px;font-weight:860;margin-bottom:9px}.tstep .desc{font-size:16px;line-height:1.5;color:var(--muted)}
-.tipGrid{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px 34px}.tip{padding-top:20px;border-top:3px solid #C6D1DD}.tip:nth-child(2),.tip:nth-child(5){border-color:#AFC9BE}.tip:nth-child(3),.tip:nth-child(6){border-color:#D3C097}.tip .title{font-size:24px;font-weight:860;margin-bottom:9px}.tip .desc{font-size:17px;line-height:1.55;color:var(--muted)}
-.verify{display:grid;grid-template-columns:1fr 1fr;gap:54px;margin-top:44px}.vcol{padding-top:26px;border-top:5px solid #BDCBD9}.vcol:nth-child(2){border-color:#A8C5BA}.vcol .head{font-size:31px;font-weight:860;margin-bottom:24px}.vrow{padding:16px 0;border-top:1px solid var(--line)}.vrow b{font-size:20px}.vrow span{display:block;margin-top:7px;font-size:17px;color:var(--muted);line-height:1.52}
-.summary{margin-top:74px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.sum{padding-top:22px;border-top:5px solid #B7C6D8}.sum:nth-child(2){border-color:#9CBDB2}.sum:nth-child(3){border-color:#D4BF92}.sum:nth-child(4){border-color:#A7B3C2}.sum .n{font-size:50px;font-weight:900;letter-spacing:-2px;color:#C4CBD3}.sum .t{font-size:29px;font-weight:860;margin:16px 0 12px}.sum .d{font-size:17px;line-height:1.55;color:var(--muted)}
-.finalLine{margin-top:56px;font-size:31px;font-weight:860;line-height:1.45}
+.slide.active{display:block}.inner{position:absolute;inset:0;padding:70px 84px 66px}
+.eyebrow{font-size:18px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+.kicker{display:flex;align-items:center;gap:16px;margin-bottom:14px}.kicker:after{content:"";height:1px;background:var(--line);flex:1}
+h1{font-size:76px;line-height:1.05;letter-spacing:-2.7px;margin:0;font-weight:860}
+h2{font-size:46px;line-height:1.15;letter-spacing:-1.2px;margin:0;font-weight:850}
+p{font-size:21px;line-height:1.62;color:var(--muted);margin:0}
+.blue{color:var(--blue)}.green{color:var(--green)}.gold{color:var(--gold)}
+.cover{position:absolute;left:90px;top:150px;width:880px}.tag{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border:1px solid #C9D4E1;border-radius:999px;font-size:18px;font-weight:800;color:var(--blue);background:rgba(255,255,255,.45)}.tag:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.coverSub{font-size:27px;line-height:1.55;color:#586777;margin-top:28px;width:760px}
+.coverShape{position:absolute;right:80px;top:120px;width:560px;height:560px}
+.ring{position:absolute;border-radius:50%;border:2px solid #CBD5DF}.ring.r1{width:470px;height:470px;right:15px;top:25px}.ring.r2{width:340px;height:340px;right:80px;top:90px}.ring.r3{width:200px;height:200px;right:150px;top:160px;border-color:#A7C1B7}
+.dot{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--blue)}.d1{right:250px;top:50px}.d2{right:72px;top:245px;background:var(--green)}.d3{right:365px;top:360px;background:var(--gold)}
+.bottomLine{position:absolute;left:90px;right:90px;bottom:92px;height:1px;background:var(--line)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:50px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.orgWrap{position:relative;margin-top:44px;height:570px}
+.centerBox{position:absolute;left:50%;top:190px;transform:translateX(-50%);width:360px;padding:27px 30px;border:2px solid #9EB3CA;background:#F8FAFC;text-align:center}.centerBox b{display:block;font-size:30px;margin-bottom:10px}.centerBox span{font-size:18px;color:var(--muted)}
+.orgItem{position:absolute;width:320px;padding:22px 0;border-top:4px solid #B8C7D7}.orgItem b{display:block;font-size:25px;margin-bottom:9px}.orgItem span{font-size:17px;line-height:1.55;color:var(--muted)}.o1{left:20px;top:35px}.o2{right:20px;top:35px}.o3{left:20px;bottom:35px;border-color:#A8C4B9}.o4{right:20px;bottom:35px;border-color:#D0BA8A}.o5{left:640px;bottom:20px;width:320px;border-color:#B9C1CC}
+.connectorLine{position:absolute;background:#CDD3D9}.v1{width:1px;height:120px;left:799px;top:72px}.v2{width:1px;height:110px;left:799px;top:300px}.h1{height:1px;width:460px;left:338px;top:150px}.h2{height:1px;width:460px;left:800px;top:150px}.h3{height:1px;width:460px;left:338px;top:440px}.h4{height:1px;width:460px;left:800px;top:440px}
+.todo{margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.todoItem{padding:30px 24px 34px;border-right:1px solid var(--line)}.todoItem:last-child{border-right:0}.todoItem .n{font-size:17px;color:#9AA4AE;font-weight:800;margin-bottom:42px}.todoItem .t{font-size:29px;font-weight:850;margin-bottom:13px}.todoItem .d{font-size:18px;line-height:1.58;color:var(--muted)}.todoItem .eg{font-size:16px;line-height:1.55;color:var(--blue);margin-top:20px;font-weight:750}
+.modeWrap{margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.mode{padding:30px 26px 34px;border-right:1px solid var(--line)}.mode:last-child{border-right:0}.mode .flag{font-size:17px;color:#8994A0;font-weight:800;margin-bottom:36px}.mode .name{font-size:31px;font-weight:850;margin-bottom:12px}.mode .desc{font-size:18px;line-height:1.58;color:var(--muted)}
+.tipbar{margin-top:34px;padding:22px 26px;border-left:6px solid var(--green);background:#EDF4F1;font-size:21px;line-height:1.55;color:#2B493F}
+.trickGrid{margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:28px 44px}.trick{padding:22px 0;border-top:4px solid #C2CEDB}.trick:nth-child(2),.trick:nth-child(4){border-color:#ABC6BB}.trick .title{font-size:27px;font-weight:850;margin-bottom:10px}.trick .desc{font-size:18px;line-height:1.58;color:var(--muted)}.trick .small{font-size:16px;color:#798697;line-height:1.55;margin-top:10px}
+.criteria{margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.crit{padding:30px 18px 34px;border-right:1px solid var(--line)}.crit:last-child{border-right:0}.crit .n{font-size:17px;color:#98A2AE;font-weight:800;margin-bottom:38px}.crit .w{font-size:28px;font-weight:850;margin-bottom:12px}.crit .d{font-size:17px;line-height:1.55;color:var(--muted)}
+.exampleLine{margin-top:30px;padding:19px 0;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:center}.exampleLine b{font-size:19px}.exampleLine span{font-size:17px;color:var(--muted)}
+.askList{margin-top:34px;border-top:1px solid var(--line)}.askRow{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--line)}.askRow b{font-size:20px;color:var(--blue)}.askRow span{font-size:19px;line-height:1.55;color:#435267}
+.quoteBox{padding:30px 0;border-top:5px solid #B8C8D9}.quoteBox .cap{font-size:17px;color:#8793A1;font-weight:800;margin-bottom:20px}.quoteBox .q{font-size:27px;line-height:1.52;font-weight:820}.quoteBox .s{font-size:17px;color:var(--muted);line-height:1.58;margin-top:20px}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin-top:84px}.timeline:before{content:"";position:absolute;left:5%;right:5%;top:42px;height:2px;background:#C9D0D7}.step{position:relative;text-align:center;padding:0 10px}.step .circle{position:relative;z-index:2;width:84px;height:84px;border-radius:50%;margin:0 auto 24px;background:var(--bg);border:3px solid #BFC9D4;display:grid;place-items:center;font-size:25px;font-weight:850;color:var(--blue)}.step .t{font-size:23px;font-weight:850;margin-bottom:9px}.step .d{font-size:16px;line-height:1.5;color:var(--muted)}
+.ruleGrid{margin-top:50px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.rule{padding-top:24px;border-top:5px solid #BAC9D8}.rule:nth-child(2){border-color:#AAC5BA}.rule:nth-child(3){border-color:#D1BD8E}.rule:nth-child(4){border-color:#B6BEC9}.rule .q{font-size:27px;font-weight:850;line-height:1.3;margin-bottom:15px}.rule .d{font-size:18px;line-height:1.58;color:var(--muted)}
+.summary{margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}.sum{padding-top:22px;border-top:5px solid #B7C6D8}.sum:nth-child(2){border-color:#9CBDB2}.sum:nth-child(3){border-color:#D4BF92}.sum:nth-child(4){border-color:#A7B3C2}.sum .n{font-size:48px;font-weight:900;color:#C3CBD3}.sum .t{font-size:29px;font-weight:850;margin:15px 0 11px}.sum .d{font-size:17px;line-height:1.55;color:var(--muted)}
+.endnote{margin-top:52px;font-size:30px;font-weight:850;line-height:1.5}
 #dots{position:fixed;z-index:40;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(244,242,236,.88);backdrop-filter:blur(8px)}.dotnav{width:8px;height:8px;border-radius:50%;background:#BBC2C9;cursor:pointer}.dotnav.on{background:var(--ink);transform:scale(1.25)}
 #nav{position:fixed;right:18px;bottom:max(10px,env(safe-area-inset-bottom));z-index:41;display:flex;gap:8px}#nav button{border:1px solid #D0CCC3;background:rgba(251,250,246,.94);color:var(--ink);width:42px;height:36px;font-size:22px;border-radius:10px;cursor:pointer}
-.slide.active .inner,.slide.active .cover-copy{animation:rise .32s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.slide.active .inner,.slide.active .cover{animation:rise .3s ease both}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
 @media(max-width:700px) and (orientation:portrait){#stage{top:calc(env(safe-area-inset-top) + 190px);transform:translate(-50%,0) scale(var(--scale,1));transform-origin:top center}#dots{bottom:calc(env(safe-area-inset-bottom) + 8px)}#nav{bottom:calc(env(safe-area-inset-bottom) + 3px)}}
 </style>
 </head>
 <body>
 <div id="viewport"><div id="stage">
 
-<section class="slide active" data-note="开场：不讲模型参数，讲怎么让AI真正参与工作；WorkBuddy作为具体载体。">
-<div class="cover-copy"><span class="hero-tag">新员工 · AI应用第一课</span><div style="height:34px"></div><h1>从“会问”到<br><span class="blue">让 AI 替你干活</span></h1><div class="cover-sub">用 WorkBuddy 认识 AI Agent：会执行、能连接、可远程，再把正确的工作方法交给它。</div></div><div class="bigghost">AI</div><div class="cover-line"></div>
+<section class="slide active" data-note="开场：今天主要讲三件事——条线这块AI工作怎么推进、WorkBuddy平时怎么用、使用时要注意什么。">
+<div class="cover"><span class="tag">新员工培训</span><div style="height:34px"></div><h1>AI应用入门</h1><div class="coverSub">先看看我们条线这块工作怎么做，再讲 WorkBuddy 怎么用，最后留几条平时容易踩坑的地方。</div></div>
+<div class="coverShape"><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div></div><div class="bottomLine"></div>
 </section>
 
-<section class="slide" data-note="培训录音的核心判断：很多不好用，最后是业务规则、流程、边界没有说清楚。模型之外，工作设计更重要。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">01 先从工作出发</div></div><h2>很多“AI 不好用”，根因其实很具体</h2>
-<div class="two" style="margin-top:54px;grid-template-columns:1.03fr .97fr"><div><div class="statement">业务规则、流程和边界<br><span class="blue">没有被讲清楚</span>。</div><p style="margin-top:28px;max-width:690px">模型可以很强，但它不知道你们部门真正采用什么口径、先做什么后做什么、哪些情况必须停下来交给人判断。</p><div class="workspace" style="margin-top:40px">先把工作本身讲清楚，再决定用哪个模型、哪个工具。</div></div>
-<div><div class="lineCard"><div class="cap">要教给 AI 的</div><div class="title">工作经验</div><div class="desc">规则、流程、知识、例外情况、决策边界。</div></div><div class="lineCard"><div class="cap">希望 AI 承担的</div><div class="title">稳定的一部分工作</div><div class="desc">先让它承担清晰、重复、可检查的环节。</div></div></div></div></div></section>
+<section class="slide" data-note="这一页先让新员工知道：AI工作不是某一个项目，中心平时同时在做项目、场景、工具、队伍和管理要求几块事情。"><div class="inner">
+<div class="kicker"><div class="eyebrow">01 先知道这件事在条线里怎么推进</div></div><h2>数智化推动中心平时主要抓这几块</h2>
+<div class="orgWrap">
+<div class="connectorLine v1"></div><div class="connectorLine v2"></div><div class="connectorLine h1"></div><div class="connectorLine h2"></div><div class="connectorLine h3"></div><div class="connectorLine h4"></div>
+<div class="centerBox"><b>数智化推动中心</b><span>统筹条线 AI 应用推动</span></div>
+<div class="orgItem o1"><b>重点项目</b><span>推进长行星火 Alpha 智脑等重点建设，把AI能力放进投研和业务流程。</span></div>
+<div class="orgItem o2"><b>业务应用</b><span>和各中心一起找日常痛点，小场景先试，能用再往前走。</span></div>
+<div class="orgItem o3"><b>工具推广</b><span>WorkBuddy 等通用工具先用起来，培训、案例和经验一起推广。</span></div>
+<div class="orgItem o4"><b>队伍机制</b><span>AI先锋队、应用推动联络人，帮助各中心有人对接、有人试、有人反馈。</span></div>
+<div class="orgItem o5"><b>使用管理</b><span>数据、权限、工具使用、结果核对等要求同步跟上。</span></div>
+</div></div></section>
 
-<section class="slide" data-note="培训里讲了三种协作方式：工具、虚拟员工、秘书。WorkBuddy基本覆盖了这三个层次。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">02 AI 可以怎么和你协作</div></div><h2>从回答问题，到真正“接一块工作”</h2>
-<div class="levels three"><div class="level"><div class="num">01</div><div class="title">当工具</div><div class="desc">你问一句，它答一句。适合查思路、改写、解释。</div><div class="map">WorkBuddy：仅问答 Ask</div></div><div class="level"><div class="num">02</div><div class="title">当虚拟员工</div><div class="desc">给任务、材料、规则和权限，让它完成一段流程并交付文件。</div><div class="map">WorkBuddy：Agent + 工作空间</div></div><div class="level"><div class="num">03</div><div class="title">当助理</div><div class="desc">人在别处也能发指令、看进度；重复任务还能定时自动跑。</div><div class="map">WorkBuddy：助理 + 远程 + 自动化</div></div></div>
-<div class="finalLine">对新员工最实用的目标：先把 AI 从“聊天框”升级成<span class="green">能交付结果的工作台</span>。</div></div></section>
+<section class="slide" data-note="告诉新员工：以后自己可能接触AI的入口很多，不一定要做项目。日常工具、提需求、参加共创、案例分享都算。"><div class="inner">
+<div class="kicker"><div class="eyebrow">02 你以后可能会碰到什么</div></div><h2>AI 跟你的工作，通常从这些地方发生关系</h2>
+<div class="todo grid4">
+<div class="todoItem"><div class="n">01</div><div class="t">自己用工具</div><div class="d">看材料、整理信息、写初稿、处理文件。</div><div class="eg">最常见，也最适合先开始</div></div>
+<div class="todoItem"><div class="n">02</div><div class="t">提一个小需求</div><div class="d">发现重复、费时间的环节，和联络人或中心一起看看能不能优化。</div></div>
+<div class="todoItem"><div class="n">03</div><div class="t">参与项目或共创</div><div class="d">把业务流程、规则、材料、例外情况讲清楚，配合测试和调整。</div></div>
+<div class="todoItem"><div class="n">04</div><div class="t">分享好用的做法</div><div class="d">某个提示、Skill、模板真的省时间，就可以继续复制给更多人。</div></div>
+</div>
+<div class="endnote">不用一上来就做“大项目”。先解决自己每天会遇到的小麻烦。</div>
+</div></section>
 
-<section class="slide" data-note="WorkBuddy上手页：三种模式 + 工作空间。Plan适合复杂任务，Ask只问不执行，Agent可以实际改文件。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">03 WorkBuddy 上手</div></div><h2>先搞懂这两个入口：工作模式 + 工作空间</h2>
-<div class="modeGrid three"><div class="mode"><div class="flag">ASK</div><div class="name">仅问答</div><div class="desc">只讨论、找思路、确认需求，不对文件做实际操作。</div></div><div class="mode"><div class="flag">PLAN</div><div class="name">计划</div><div class="desc">先给出执行方案，你确认后再动手。复杂任务建议先用它。</div></div><div class="mode"><div class="flag">AGENT</div><div class="name">默认执行</div><div class="desc">直接读写工作空间里的文件，完成文档、表格、PPT、整理等任务。</div></div></div>
-<div class="workspace"><b>小技巧：</b>一个任务建一个独立工作空间，把要处理的文件副本放进去。它更好找材料，也更不容易误碰别的文件。</div></div></section>
+<section class="slide" data-note="WorkBuddy先讲用途，不堆产品名词。它可以问答，也可以直接处理本地文件、生成文档表格PPT、整理目录。"><div class="inner">
+<div class="kicker"><div class="eyebrow">03 WorkBuddy 平时能帮你干什么</div></div><h2>把它当成电脑上的一个“干活助手”</h2>
+<div class="todo grid4">
+<div class="todoItem"><div class="n">01</div><div class="t">读</div><div class="d">看长材料、找重点、比差异、从文件里提数据。</div></div>
+<div class="todoItem"><div class="n">02</div><div class="t">写</div><div class="d">邮件、通知、纪要、方案、报告初稿，先出一版再改。</div></div>
+<div class="todoItem"><div class="n">03</div><div class="t">做文件</div><div class="d">文档、表格、PPT、网页、文件整理，都可以让它直接动手。</div></div>
+<div class="todoItem"><div class="n">04</div><div class="t">接别的工具</div><div class="d">授权后可以连外部服务，减少来回复制粘贴。</div></div>
+</div>
+<div class="tipbar">一个任务建一个工作空间，把相关材料副本放进去。文件好找，后面也方便继续改。</div>
+</div></section>
 
-<section class="slide" data-note="把三个概念讲清：Skill是执行能力，专家是角色+方法，连接器是外部服务。连接器官方示例包括QQ邮箱、腾讯文档、乐享、腾讯会议、TAPD、腾讯网盘等。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">04 给 WorkBuddy 增加“手和脑”</div></div><h2>技能、专家、连接器，分别解决三类问题</h2>
-<div class="capGrid three"><div class="capItem"><div class="n">SKILL</div><div class="title">技能</div><div class="desc">让它会做一类具体动作或工作流。</div><div class="eg">例：PPT制作、海报生成、自动化报表、文件整理</div></div><div class="capItem"><div class="n">EXPERT</div><div class="title">专家</div><div class="desc">给它固定角色、方法论和关注重点。</div><div class="eg">适合：分析、评审、写作等需要专业视角的任务</div></div><div class="capItem"><div class="n">CONNECTOR</div><div class="title">连接器</div><div class="desc">让它在授权后读取或操作外部服务。</div><div class="eg">例：QQ邮箱、腾讯文档、乐享、腾讯会议、TAPD、腾讯网盘等</div></div></div>
-<div class="finalLine">简单记：<span class="blue">Skill 给能力，Expert 给方法，Connector 给外部数据和动作。</span></div></div></section>
+<section class="slide" data-note="三种模式用人话讲：Ask只问，Plan先看方案，Agent直接执行。"><div class="inner">
+<div class="kicker"><div class="eyebrow">04 三种模式怎么选</div></div><h2>看你这次是想“问一问”，还是让它“动手做”</h2>
+<div class="modeWrap grid3">
+<div class="mode"><div class="flag">ASK</div><div class="name">只想问问</div><div class="desc">找思路、问概念、看材料，不让它改文件。</div></div>
+<div class="mode"><div class="flag">PLAN</div><div class="name">先看方案</div><div class="desc">任务比较复杂，先让它把准备怎么做讲清楚，你觉得没问题再开始。</div></div>
+<div class="mode"><div class="flag">AGENT</div><div class="name">直接让它干</div><div class="desc">需求已经比较清楚，直接读写文件、整理材料、生成成品。</div></div>
+</div>
+<div class="tipbar"><b>一个简单习惯：</b>重要文件先留副本；任务越复杂，越值得先开 Plan 看一眼。</div>
+</div></section>
 
-<section class="slide" data-note="手机可以作为远程控制台；也可以通过微信、企微、QQ、钉钉、飞书等助理远程发指令。电脑需保持开机运行WorkBuddy，建议开启允许锁屏运行。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">05 人离开电脑，任务也可以继续</div></div><h2>手机不是“看结果”，它可以直接接管电脑上的任务</h2>
-<div class="remoteFlow"><div class="node"><div class="mini">PHONE</div><div class="main">手机发指令</div><div class="sub">续聊、补充材料、审批、停止任务、查看产物</div></div><div class="rarr">→</div><div class="node"><div class="mini">DESKTOP</div><div class="main">电脑上的 WorkBuddy 执行</div><div class="sub">继续使用本地文件、终端、技能、连接器和已有权限</div></div><div class="rarr">→</div><div class="node"><div class="mini">RESULT</div><div class="main">结果回到手机</div><div class="sub">查看文件、进度和等待确认事项</div></div></div>
-<div class="platforms"><b>两种入口</b><span>WorkBuddy App 连接电脑　｜　微信 / 企业微信 / QQ / 钉钉 / 飞书“助理”</span></div>
-<div class="startStrip"><b>使用前</b><span>电脑保持开机并运行 WorkBuddy；建议打开“允许移动端连接”和“允许锁屏运行”。</span></div></div></section>
+<section class="slide" data-note="这一页专门讲新员工容易感兴趣的几个功能：手机遥控、通讯工具助理、连接器、自动化/云端。"><div class="inner">
+<div class="kicker"><div class="eyebrow">05 几个挺好用、但容易被忽略的功能</div></div><h2>WorkBuddy 也不一定非得坐在电脑前用</h2>
+<div class="trickGrid">
+<div class="trick"><div class="title">手机可以远程给电脑下任务</div><div class="desc">人在外面，也可以继续发指令、补充要求、看进度和结果。</div><div class="small">电脑要保持开机并运行 WorkBuddy。</div></div>
+<div class="trick"><div class="title">微信、企微、QQ、钉钉、飞书都能接</div><div class="desc">配置“助理”以后，可以直接从常用通讯工具发消息，让电脑上的 WorkBuddy 去执行。</div></div>
+<div class="trick"><div class="title">连接器可以少做很多复制粘贴</div><div class="desc">按授权接邮箱、文档、会议、网盘等服务，资料可以直接拿来用。</div></div>
+<div class="trick"><div class="title">重复的活可以定时跑</div><div class="desc">固定的日报、周报、资料整理，可以设成自动任务。有企业权限时，还可以使用云端运行环境。</div><div class="small">云端运行环境属于企业相关能力，具体看账号和权限。</div></div>
+</div></div></section>
 
-<section class="slide" data-note="自动化是定时重复执行；企业智能体还可以有云端Runtime。云端沙箱是企业版/授权能力，不一定所有账号都有。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">06 让任务自己跑起来</div></div><h2>两种进一步的“放手”：自动化 + 云端运行环境</h2>
-<div class="parallel"><div class="box"><div class="cap">AUTOMATION</div><div class="title">定时自动化</div><div class="desc">把规则清楚、重复性高的任务设成每天 / 每周 / 每月自动执行。</div><div class="steps">每天整理资讯 → 输出早报<br>每周汇总数据 → 生成周报<br>定期读取目录 → 分类与归档</div></div><div class="box greenbox"><div class="cap">CLOUD RUNTIME</div><div class="title">云端运行环境</div><div class="desc">企业智能体可配置独立云端沙箱，具备 Linux 文件系统和终端，任务可以在云端环境中执行。</div><div class="steps"><b>注意：</b>这是企业智能体 / 授权范围内的能力，不等同于所有个人账号都有一台“云电脑”。</div></div></div>
-<div class="workspace" style="margin-top:34px">建议顺序：先在本地跑通 → 再远程 → 再自动化；需要企业云环境时，再考虑云端 Runtime。</div></div></section>
+<section class="slide" data-note="从培训录音提炼的五个标准，改成日常语言。"><div class="inner">
+<div class="kicker"><div class="eyebrow">06 什么活适合先交给 AI</div></div><h2>满足这几个条件，通常比较容易用起来</h2>
+<div class="criteria grid5">
+<div class="crit"><div class="n">01</div><div class="w">经常做</div><div class="d">每天、每周都会碰到，省一点时间就有感觉。</div></div>
+<div class="crit"><div class="n">02</div><div class="w">做法差不多</div><div class="d">每次处理方式差异不大，步骤比较固定。</div></div>
+<div class="crit"><div class="n">03</div><div class="w">材料找得到</div><div class="d">需要看的文件、数据、制度、样例能提供。</div></div>
+<div class="crit"><div class="n">04</div><div class="w">好坏说得清</div><div class="d">什么算对、什么算错，自己心里有标准。</div></div>
+<div class="crit"><div class="n">05</div><div class="w">出错拦得住</div><div class="d">AI做错以后，人能发现、能修改、不会直接造成大影响。</div></div>
+</div>
+<div class="exampleLine"><b>比如</b><span>整理会议待办、从材料里找数据、按固定格式写邮件、汇总每周数据、做第一版报告。</span></div>
+</div></section>
 
-<section class="slide" data-note="录音里的五个筛选标准：高频、重复、边界清晰、资料完整、风险可控。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">07 什么工作值得先交给 AI</div></div><h2>先选“小而具体”的环节</h2>
-<div class="criteria five"><div class="criterion"><div class="n">01</div><div class="w">高频</div><div class="d">每天、每周都会出现，优化后能持续产生价值。</div></div><div class="criterion"><div class="n">02</div><div class="w">重复</div><div class="d">处理方法大体相似，有机械整理或生成工作。</div></div><div class="criterion"><div class="n">03</div><div class="w">边界清晰</div><div class="d">什么算对、什么算错，可以提前说清楚。</div></div><div class="criterion"><div class="n">04</div><div class="w">资料完整</div><div class="d">它需要的材料、规则和样例能够提供。</div></div><div class="criterion"><div class="n">05</div><div class="w">风险可控</div><div class="d">即使做错，人也能及时发现并纠正。</div></div></div>
-<div class="startStrip"><b>适合新员工起步</b><span>材料提取　会议整理　邮件初稿　信息归类　数据初步分析　格式转换</span></div></div></section>
+<section class="slide" data-note="提示词方法压成人话：为什么做、看什么、干什么、哪些别乱来、最后交什么。"><div class="inner">
+<div class="kicker"><div class="eyebrow">07 怎么把事情说清楚</div></div><h2>不用背复杂提示词，先把这五句话说全</h2>
+<div class="grid2" style="margin-top:38px;grid-template-columns:1.03fr .97fr">
+<div class="askList">
+<div class="askRow"><b>为什么做</b><span>这件事的背景是什么，最后给谁用。</span></div>
+<div class="askRow"><b>给它看什么</b><span>哪些文件、数据、文字可以作为依据。</span></div>
+<div class="askRow"><b>让它干什么</b><span>提取、整理、分析、写初稿，动作说具体。</span></div>
+<div class="askRow"><b>哪些地方别乱来</b><span>没说的别补、拿不准要标出来、哪些口径不能改。</span></div>
+<div class="askRow"><b>最后交什么</b><span>要表格、邮件、纪要还是PPT；多长、什么结构。</span></div>
+</div>
+<div class="quoteBox"><div class="cap">一个很实用的问法</div><div class="q">“为了把这件事做好，<br>你还需要我补充哪些信息？”</div><div class="s">很多时候你自己也不知道还缺什么，让它先问一轮，比直接开始写省事。</div></div>
+</div></div></section>
 
-<section class="slide" data-note="把任务交代清楚：背景、材料、任务、规则、输出。WorkBuddy官方新手指南也强调做什么+有什么+怎么样。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">08 怎么把任务交代清楚</div></div><h2>提示词的本质，是一份<span class="blue">工作说明</span></h2>
-<div class="two" style="margin-top:38px;grid-template-columns:1.03fr .97fr"><div class="briefList"><div class="briefRow"><div class="briefKey">背景</div><div class="briefVal">我是谁？为什么做？最终给谁使用？</div></div><div class="briefRow"><div class="briefKey">材料</div><div class="briefVal">可以依据哪些文件、数据和文字？</div></div><div class="briefRow"><div class="briefKey">任务</div><div class="briefVal">这一步到底要完成什么动作？</div></div><div class="briefRow"><div class="briefKey">规则</div><div class="briefVal">按什么标准处理？什么不能补？</div></div><div class="briefRow"><div class="briefKey">输出</div><div class="briefVal">最后交付什么格式、长度和结构？</div></div></div>
-<div class="exampleBox"><div class="title">一个日常例子</div><div class="quote">“帮我写个通知”之前，先补齐：<br>发给谁 / 为什么发 / 反馈什么 / 截止时间 / 语气与字数</div><div class="mini">如果你不知道还缺什么，可以先问 WorkBuddy：“为了完成这个任务，你还需要我补充哪些信息？”</div></div></div></div></section>
+<section class="slide" data-note="复杂任务拆开，录音里反复强调：拆开后更好排错，也更稳。"><div class="inner">
+<div class="kicker"><div class="eyebrow">08 事情一复杂，就拆开做</div></div><h2>报告、分析这类任务，一口气全丢过去容易返工</h2>
+<div class="timeline">
+<div class="step"><div class="circle">01</div><div class="t">读材料</div><div class="d">先把事实和数字找出来。</div></div>
+<div class="step"><div class="circle">02</div><div class="t">分类</div><div class="d">把信息按主题整理。</div></div>
+<div class="step"><div class="circle">03</div><div class="t">搭框架</div><div class="d">先确定要写哪些部分。</div></div>
+<div class="step"><div class="circle">04</div><div class="t">逐段生成</div><div class="d">一段一段写，随时可以改。</div></div>
+<div class="step"><div class="circle">05</div><div class="t">回原文核对</div><div class="d">重点看事实、数字和口径。</div></div>
+<div class="step"><div class="circle">06</div><div class="t">最后整理</div><div class="d">统一表达和格式。</div></div>
+</div>
+<div class="tipbar" style="margin-top:58px">哪一步老出错，就把哪一步单独拿出来处理。这样也容易看出问题到底出在哪里。</div>
+</div></section>
 
-<section class="slide" data-note="录音里一个很重要的提炼：稳定参与工作的AI需要业务规则、处理流程、知识和决策边界。知识本身还有版本和生效时间。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">09 真正要教给 AI 的，是“工作经验”</div></div><h2>把经验拆成四类，AI 才能稳定参与</h2>
-<div class="experience four"><div class="exp"><div class="n">01</div><div class="title">规则</div><div class="desc">什么条件算合格？哪些字段必须有？例外怎么处理？</div></div><div class="exp"><div class="n">02</div><div class="title">流程</div><div class="desc">先做什么、后做什么；哪一步不通过就停止。</div></div><div class="exp"><div class="n">03</div><div class="title">知识</div><div class="desc">制度、案例、模板、标准；还要关注版本、生效时间和维护范围。</div></div><div class="exp"><div class="n">04</div><div class="title">决策边界</div><div class="desc">哪些可以自动做，哪些拿不准时必须回答“待确认”。</div></div></div>
-<div class="finalLine">聊天更自然只是表面，真正有用的是<span class="green">把业务经验变成可复用的规则</span>。</div></div></section>
+<section class="slide" data-note="规章制度页只讲最实用的四个问题，不展开做安全培训。具体要求以本行制度和专项要求为准。"><div class="inner">
+<div class="kicker"><div class="eyebrow">09 用之前，先问自己四个问题</div></div><h2>工具好用，也得知道什么地方要收住</h2>
+<div class="ruleGrid">
+<div class="rule"><div class="q">这段信息<br>能不能放进去？</div><div class="d">客户、交易、内部经营等敏感信息，先看数据和保密要求。</div></div>
+<div class="rule"><div class="q">这个工具<br>能不能用？</div><div class="d">按本行关于AI工具、账号、授权和安全的相关要求执行。</div></div>
+<div class="rule"><div class="q">这个结果<br>能不能直接发？</div><div class="d">事实、数字、制度、监管要求、对外口径都要核。</div></div>
+<div class="rule"><div class="q">最后谁负责？</div><div class="d">正式提交、业务判断和对外发送，最后还是由人确认。</div></div>
+</div>
+<div class="exampleLine"><b>一句话</b><span>先确认能不能用，再想怎么用得更快。</span></div>
+</div></section>
 
-<section class="slide" data-note="复杂问题拆流程。培训里用标书、征信、合同等例子说明：拆开后更稳定，也更容易排查哪一步错了。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">10 复杂任务要拆开</div></div><h2>一步到位看似省事，分步执行反而更稳</h2>
-<div class="timeline"><div class="tstep"><div class="dot">01</div><div class="title">读材料</div><div class="desc">先提事实、数字、明确结论。</div></div><div class="tstep"><div class="dot">02</div><div class="title">分类</div><div class="desc">按主题、时间或问题整理。</div></div><div class="tstep"><div class="dot">03</div><div class="title">搭结构</div><div class="desc">先定大纲和处理顺序。</div></div><div class="tstep"><div class="dot">04</div><div class="title">逐步生成</div><div class="desc">每一步输出都可先检查。</div></div><div class="tstep"><div class="dot">05</div><div class="title">核对</div><div class="desc">回到原始材料验证事实。</div></div><div class="tstep"><div class="dot">06</div><div class="title">交付</div><div class="desc">最后统一格式和表达。</div></div></div>
-<div class="workspace" style="margin-top:58px">如果一个环节老出错，就把它单独拆出来。这样能快速判断到底是“读错了、判断错了，还是输出错了”。</div></div></section>
-
-<section class="slide" data-note="WorkBuddy官方新手技巧：明确任务、小步快跑、多轮调整、先本地后远程、给样例、多任务、备份、自动化。这里压成六条。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">11 WorkBuddy 几个好用的小技巧</div></div><h2>真正省时间的，往往是这些使用习惯</h2>
-<div class="tipGrid"><div class="tip"><div class="title">复杂任务先开 Plan</div><div class="desc">先看它准备怎么做，确认范围以后再让它执行。</div></div><div class="tip"><div class="title">给样例，比形容更有效</div><div class="desc">有满意的周报、PPT、邮件，直接让它参考结构和风格。</div></div><div class="tip"><div class="title">一个任务一个工作空间</div><div class="desc">资料集中放，降低找错文件、改错目录的概率。</div></div><div class="tip"><div class="title">不同任务开不同会话</div><div class="desc">写报告、做数据、回邮件分开跑；WorkBuddy 支持多任务并行。</div></div><div class="tip"><div class="title">重要文件先留副本</div><div class="desc">批量修改、移动、覆盖之前先备份，给自己保留回退路径。</div></div><div class="tip"><div class="title">先本地跑稳，再远程/自动化</div><div class="desc">先看懂它怎么执行，再把重复任务交给助理和定时任务。</div></div></div></div></section>
-
-<section class="slide" data-note="录音里强调AI测试不能沿用传统软件完全确定性的思路。结果可以不同，但事实、条件和边界必须满足。银行场景还要确认信息、工具、对外使用边界。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">12 最后一关：怎么判断“能不能用”</div></div><h2>AI 可以表达不同，但关键约束不能漂</h2>
-<div class="verify"><div class="vcol"><div class="head">验收 AI 结果</div><div class="vrow"><b>看依据</b><span>事实和数字能不能回到原材料。</span></div><div class="vrow"><b>看条件</b><span>是否满足你定义的业务标准，而不是要求每次措辞完全一致。</span></div><div class="vrow"><b>看不确定性</b><span>资料不足时，应该停下来标“待确认”，不能自己补全。</span></div></div>
-<div class="vcol"><div class="head">银行场景再多问三句</div><div class="vrow"><b>这段信息能不能输入？</b><span>客户、交易、内部经营等敏感信息先看数据边界。</span></div><div class="vrow"><b>这个工具能不能使用？</b><span>按本行相关管理要求使用工具、连接器和权限。</span></div><div class="vrow"><b>这个结果能不能直接对外？</b><span>正式提交、业务判断和对外口径由人工确认。</span></div></div></div></div></section>
-
-<section class="slide" data-note="总结给新员工的上手顺序：小场景、桌面跑通、规则沉淀、再连接远程和自动化。"><div class="inner">
-<div class="kickerline"><div class="eyebrow">13 总结</div></div><h2>推荐你按这个顺序开始</h2>
-<div class="summary"><div class="sum"><div class="n">01</div><div class="t">找一个小场景</div><div class="d">高频、重复、边界清晰，先解决一个真实的小问题。</div></div><div class="sum"><div class="n">02</div><div class="t">桌面端跑通</div><div class="d">选好模式和工作空间，把任务、材料和规则说清楚。</div></div><div class="sum"><div class="n">03</div><div class="t">把经验沉淀下来</div><div class="d">把有效提示、样例、Skill、专家和流程逐步固化。</div></div><div class="sum"><div class="n">04</div><div class="t">再放手</div><div class="d">连接外部服务、手机远程、自动化；有企业权限时再上云端 Runtime。</div></div></div>
-<div class="finalLine">真正的 AI 应用，不是“问得更聪明”，而是<span class="green">让一段工作真正跑起来</span>。</div></div></section>
+<section class="slide" data-note="收尾给新员工一个很具体的上手顺序。"><div class="inner">
+<div class="kicker"><div class="eyebrow">10 如果你明天就想开始</div></div><h2>按这个顺序来，够用了</h2>
+<div class="summary">
+<div class="sum"><div class="n">01</div><div class="t">挑一件小事</div><div class="d">从自己每天都会碰到、又比较费时间的事情开始。</div></div>
+<div class="sum"><div class="n">02</div><div class="t">用 WorkBuddy 做一遍</div><div class="d">材料放进工作空间，把要求说清楚，先看看第一版。</div></div>
+<div class="sum"><div class="n">03</div><div class="t">把好用的东西留下</div><div class="d">提示词、样例、模板、Skill，好用就继续复用。</div></div>
+<div class="sum"><div class="n">04</div><div class="t">再往前走一步</div><div class="d">重复任务再考虑手机远程、连接器和自动化。</div></div>
+</div>
+<div class="endnote">遇到条线 AI 应用、工具使用或规则方面的问题，可以通过联络人、先锋队向数智化推动中心反馈。</div>
+</div></section>
 
 </div></div>
-<div id="dots"></div><div id="nav"><button aria-label="上一页" onclick="prev()">‹</button><button aria-label="下一页" onclick="next()">›</button></div>
+<div id="dots"></div>
+<div id="nav"><button aria-label="上一页" onclick="prev()">‹</button><button aria-label="下一页" onclick="next()">›</button></div>
 <script>
 const W=1600,H=900,stage=document.getElementById('stage'),slides=[...document.querySelectorAll('.slide')],dots=document.getElementById('dots');let idx=0;
 function scaleStage(){const vv=window.visualViewport;const vw=(vv&&vv.width)||document.documentElement.clientWidth||innerWidth;const vh=(vv&&vv.height)||document.documentElement.clientHeight||innerHeight;const portrait=vh>vw;const reserve=portrait?110:28;const usableH=Math.max(160,vh-reserve);const sc=Math.min(vw/W,usableH/H);stage.style.setProperty('--scale',String(sc));}
